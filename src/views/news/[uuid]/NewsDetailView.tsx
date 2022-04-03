@@ -17,9 +17,15 @@ export const NewsDetailView = () => {
     variables: { uuid },
   });
 
-  const [mutateNewsLike] = useMutation(newsLikeMutation);
-  const [mutateNewsDislike] = useMutation(newsDislikeMutation);
-  const [mutateNewsDelete] = useMutation(newsDeleteMutation);
+  const [mutateNewsLike] = useMutation(newsLikeMutation, {
+    ignoreResults: true,
+  });
+  const [mutateNewsDislike] = useMutation(newsDislikeMutation, {
+    ignoreResults: true,
+  });
+  const [mutateNewsDelete] = useMutation(newsDeleteMutation, {
+    ignoreResults: true,
+  });
 
   const newsLike = async () => {
     await mutateNewsLike({ variables: { uuid } });
