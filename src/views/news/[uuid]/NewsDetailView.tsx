@@ -45,10 +45,16 @@ export const NewsDetailView = () => {
 
   const singleNews = newsGetQueryHandler.data?.singleNews;
 
+  if (!singleNews) {
+    window.location.pathname = "/news";
+    return null;
+  }
+
   return (
     <div>
       <Link to="/news">News</Link>
       <h2>{singleNews?.title}</h2>
+      <p>{singleNews?.date}, {singleNews?.author}</p>
       <p>{singleNews?.text}</p>
       <p>
         <LikeButton type="like" onClick={newsLike} />
